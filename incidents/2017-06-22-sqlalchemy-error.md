@@ -36,4 +36,4 @@ SQLAlchemy sessions are mysterious still.
 
 ### Helm chart ###
 
-1. Add a simple health check to the hub pod process so it'll restart if situations like this happen again.
+1. Add a simple health check to the hub pod process so it'll restart if situations like this happen again. [PR](https://github.com/jupyterhub/helm-chart/pull/36)
