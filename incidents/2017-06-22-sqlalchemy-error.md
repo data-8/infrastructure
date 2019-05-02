@@ -1,6 +1,6 @@
 ## Summary ##
 
-Late night 21 June 2017, the data8 hub went down. Students noticed, and alarm was raised in the #datahub-support channel. It was a sqlalchemy issue - restarting the hub fixed it for now.
+Late night 21 June 2017, the data8 hub went down. Students noticed, and alarm was raised in the #datahub-support channel. A restart fixed temporarily, but it kept recurring pretty regularly the next day. The underlying issue turned out to be storage related, and was finally fixed 22 June 2017 10:16.
 
 ## Timeline ##
 
@@ -20,13 +20,32 @@ It is determined that the proxy pod is fine, but the hub pod is returning empty 
 
 ### 00:20 ###
 
-The hub pod's logs are saved, and the hub is restarted. Services is restored.
+The hub pod's logs are saved, and the hub is restarted. Service is restored, everything seems fine.
 
 [Issue](https://github.com/jupyterhub/jupyterhub/issues/1179) is filed in JupyterHub about the exception being thrown in the logs.
 
+### 09:01 ###
+
+Classes start, and alarm is raised again in #datahub-support about the hub being down.
+
+### 09:09 ###
+
+Another hub restart fixes it.
+
+### 09:28 ###
+
+Recurs! A manual restart is performed, and progress made towards merging the PR that'll have kubernetes do a health check and autorestart.
+
+We play whack-a-mole with hub restarts.
+
+### 09:48 ###
+
+A student reports getting `write error: no space left on device` as an error. This is illuminating - the NFS mount on which the students homedirectories and the hub db are mounted is almost full! However, it is only 50G, while it should have been 4T.
+
+
 ## Conclusion ##
 
-SQLAlchemy sessions are mysterious still.
+Storage should be as big as you think it is.
 
 ## Action items ##
 
