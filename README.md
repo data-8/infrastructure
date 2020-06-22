@@ -1,3 +1,5 @@
+Moved to [berkeley-dsep-infra/datahub](https://github.com/berkeley-dsep-infra/datahub/tree/staging/docs/admins/incidents)
+
 This will contain operational guides, incident reports and other documentation related to the DataHub deployment at UC Berkeley.
 
 ## License ##
